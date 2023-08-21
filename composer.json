@@ -1,0 +1,15 @@
+{
+    "name": "sina/custom-framework",
+    "autoload": {
+        "psr-4": {
+            "SinaR\\CustomFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sina Rajabpour",
+            "email": "sina.rajabpour@outlook.com"
+        }
+    ],
+    "require": {}
+}
