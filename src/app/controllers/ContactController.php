@@ -3,13 +3,14 @@
 namespace SinaR\CustomFramework\app\controllers;
 
 use SinaR\CustomFramework\core\Application;
+use SinaR\CustomFramework\core\Controller;
 use SinaR\CustomFramework\core\Request;
 
-class ContactController
+class ContactController extends Controller
 {
     public function show()
     {
-        return Application::$app->router->renderView('contact');
+        return $this->render('contact');
     }
     public function submit(Request $request)
     {
