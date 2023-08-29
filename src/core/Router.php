@@ -31,7 +31,7 @@ class Router
     public function resolve()
     {
         $path = $this->request->getPath();
-        $method = $this->request->getMethod();
+        $method = $this->request->method();
         $callback = $this->routes[$method][$path] ?? false;
 
         // this is for when we don't have the specific route
@@ -47,7 +47,8 @@ class Router
 
         // prevent from calling a function statically
         if (is_array($callback)) {
-            $callback[0] = new $callback[0]();
+            Application::$app->controller = new $callback[0]();
+            $callback[0] = Application::$app->controller;
         }
 
         // call the function at the end
@@ -69,8 +70,9 @@ class Router
 
     protected function layoutContent()
     {
+        $layout = Application::$app->controller->layout;
         ob_start();
-        include_once Application::$ROOT_DIR . "/app/views/layouts/main.php";
+        include_once Application::$ROOT_DIR . "/app/views/layouts/$layout.php";
         return ob_get_clean();
     }
 

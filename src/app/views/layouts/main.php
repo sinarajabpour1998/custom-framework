@@ -32,8 +32,8 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <a href="/login" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+            <a href="/register" class="btn btn-outline-warning my-2 my-sm-0 ml-2">Register</a>
         </form>
     </div>
 </nav>
