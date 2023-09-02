@@ -2,18 +2,29 @@
 
 namespace SinaR\CustomFramework\app\models;
 
+use SinaR\CustomFramework\core\DbModel;
 use SinaR\CustomFramework\core\Model;
 
-class Register extends Model
+class User extends DbModel
 {
     public string $full_name = '';
     public string $email = '';
     public string $password = '';
     public string $password_confirm = '';
 
+    public function tableName(): string
+    {
+        return 'users';
+    }
+
+    public function attributes(): array
+    {
+        return ['full_name', 'email', 'password'];
+    }
+
     public function register()
     {
-        return true;
+        return $this->save();
     }
 
 
