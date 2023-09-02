@@ -1,16 +1,26 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
-
-//var_dump(__DIR__.'/vendor/autoload.php');
-//die();
-
 use SinaR\CustomFramework\core\Application;
 use SinaR\CustomFramework\app\controllers\ContactController;
 use SinaR\CustomFramework\app\controllers\HomeController;
 use SinaR\CustomFramework\app\controllers\auth\AuthController;
 
-$app = new Application(dirname(__DIR__).'\src');
+require_once __DIR__.'/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
+//var_dump(__DIR__.'/vendor/autoload.php');
+//die();
+
+$config = [
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
+        'user' => $_ENV['DB_USER'],
+        'password' => $_ENV['DB_PASS']
+    ]
+];
+
+$app = new Application(dirname(__DIR__).'\src', $config);
 
 $app->router->get('/', [HomeController::class, 'show']);
 $app->router->get('/contact', [ContactController::class, 'show']);

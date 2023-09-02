@@ -11,5 +11,7 @@
             "email": "sina.rajabpour@outlook.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
 }
